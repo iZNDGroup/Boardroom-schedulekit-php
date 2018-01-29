@@ -189,7 +189,7 @@ $app->post('/schedule', function () use ($app, $con, $opentok) {
   );
   sendQuery($query);
 
-  sendEmail('TokBox Demo', 'demo@tokbox.com', $name, $email, "Your TokBox appointment on " .$timestring, "You are confirmed for your appointment on " .$timestring. ". On the day of your appointment, go here: ".getBaseURL()."/index.php/chat/" .$sessionId);
+  sendEmail('Boardroom Scheduler', 'admin@boardroom.work', $name, $email, "Your Boardroom Conference appointment on " .$timestring, "You are confirmed for your appointment on " .$timestring. ". On the day of your appointment, go here: "http://demo.boardroom.work/room/" .$sessionId);
 
   $app->render('schedule.php');
 });
