@@ -137,11 +137,11 @@ $app->get('/cancel/:timestamp', function ($timestamp) use ($app, $con) {
   // delete record
   sendQuery("DELETE FROM Schedules WHERE Timestamp='$timestamp'");
 
-  sendEmail('TokBox Demo', 
-    'demo@tokbox.com', 
+  sendEmail('Boardroom s', 
+    'admin@baordroom.work', 
     $appointmentInfo['Name'],
     $appointmentInfo['Email'], 
-    "Cancelled: Your TokBox appointment on " .$appointmentInfo['Timestring'], 
+    "Cancelled: Your Boardroom appointment on " .$appointmentInfo['Timestring'], 
     "Your appointment on " .$appointmentInfo['Timestring']. ". has been cancelled. We are sorry for the inconvenience, please reschedule on ".getBaseURL()."/index.php/");
   header("Content-Type: application/json");
   echo json_encode($appointmentInfo);
@@ -167,7 +167,7 @@ $app->post('/schedule', function () use ($app, $con, $opentok) {
   );
   sendQuery($query);
 
-  sendEmail('TokBox Demo', 'demo@tokbox.com', $name, $email, "Your TokBox appointment on " .$timestring, "You are confirmed for your appointment on " .$timestring. ". On the day of your appointment, go here: ".getBaseURL()."/index.php/chat/" .$sessionId);
+  sendEmail('Boardroom Calendar', 'admin@boardroom.work', $name, $email, "Your Boardroom appointment on " .$timestring, "You are confirmed for your appointment on " .$timestring. ". On the day of your appointment, go here: ".getBaseURL()."/index.php/chat/" .$sessionId);
 
   $app->render('schedule.php');
 });
